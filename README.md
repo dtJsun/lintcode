@@ -1,0 +1,2 @@
+# lintcode
+Just for fun
