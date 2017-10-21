@@ -7,25 +7,28 @@ public class Solution {
     public int twoSum6(int[] nums, int target) {
         // write your code here
 
-        HashSet<String> set = new HashSet<>();
-
-        Arrays.sort(nums);
-
+        int count = 0;
         int start = 0;
         int end = nums.length - 1;
-
+        Arrays.sort(nums);
         while (start < end) {
             int sum = nums[start] + nums[end];
-            if (sum < target) {
+            if (sum == target) {
+                count++;
+                while (start < end && nums[start] == nums[start + 1]) {
+                    start++;
+                }
+                while (start < end && nums[end] == nums[end - 1]) {
+                    end--;
+                }
+                start++;
+                end--;
+            } else if (sum < target) {
                 start++;
             } else if (sum > target) {
                 end--;
-            } else {
-                set.add(Integer.toString(nums[start]) + Integer.toString(nums[end]));
-                start++;
-                end--;
             }
         }
-        return set.size();
+        return count;
     }
 }
