@@ -23,13 +23,13 @@ public class Solution {
 
         for (int i = 0; i < results.length; i++) {
             Record curr = results[i];
-            if (!studentRecord.containskey(curr.id)) {
-                PriorityQueue<Integer> que = new PriorityQueue<>();
+            if (!studentRecord.containsKey(curr.id)) {
+                PriorityQueue<Integer> que = new PriorityQueue<Integer>();
                 que.offer(curr.score);
                 studentRecord.put(curr.id, que);
             } else {
                 if (studentRecord.get(curr.id).size() == 5) {
-                    if (studentRecord.get(curr.id).peek() < curr.score) {
+                    if (((Integer)studentRecord.get(curr.id).peek()).intValue() < curr.score) {
                         studentRecord.get(curr.id).poll();
                         studentRecord.get(curr.id).offer(curr.score);
                     }
@@ -43,7 +43,7 @@ public class Solution {
             if (studentRecord.get(studentID).size() == 5) {
                 int sum = 0;
                 while (!studentRecord.get(studentID).isEmpty()) {
-                    sum += studentRecord.get(studentID).poll();
+                    sum += ((Integer)studentRecord.get(studentID).poll()).intValue();
                 }
                 ans.put(studentID, sum / 5.0);
             }
