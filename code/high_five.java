@@ -16,5 +16,40 @@ public class Solution {
      */
     public Map<Integer, Double> highFive(Record[] results) {
         // Write your code here
+
+        Map<Integer, Double> ans = new HashMap<>();
+
+        HashMap<Integer, PriorityQueue> studentRecord = new HashMap<>();
+
+        for (int i = 0; i < results.length; i++) {
+            Record curr = results[i];
+            if (!studentRecord.containskey(curr.id)) {
+                PriorityQueue<Integer> que = new PriorityQueue<>();
+                que.offer(curr.score);
+                studentRecord.put(curr.id, que);
+            } else {
+                if (studentRecord.get(curr.id).size() == 5) {
+                    if (studentRecord.get(curr.id).peek() < curr.score) {
+                        studentRecord.get(curr.id).poll();
+                        studentRecord.get(curr.id).offer(curr.score);
+                    }
+                } else {
+                    studentRecord.get(curr.id).offer(curr.score);
+                }
+            }
+        }
+
+        for (int studentID : studentRecord.keySet()) {
+            if (studentRecord.get(studentID).size() == 5) {
+                int sum = 0;
+                while (!studentRecord.get(studentID).isEmpty()) {
+                    sum += studentRecord.get(studentID).poll();
+                }
+                ans.put(studentID, sum / 5.0);
+            }
+        }
+        
+        return ans;
+
     }
 }
