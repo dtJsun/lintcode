@@ -6,9 +6,15 @@ public class Solution {
      */
     public int kthLargestElement2(int[] nums, int k) {
         // write your code here
+
+        quickSort(nums, 0, nums.length - 1);
+        return nums[k - 1];
+
     }
     
     private void quickSort(int[] nums, int start, int end) {
+        
+        if (start >= end) return;
         
         int pivot = partition(nums, start, end);
         quickSort(nums, start, pivot - 1);
@@ -17,6 +23,23 @@ public class Solution {
 
     private int partition(int[] nums, int start, int end) {
         
+        int pivot = end;
+
+        int i = start;
+        for (int j = start; j <= end; j++) {
+            if (nums[j] > nums[pivot]) {
+                swap(nums, j, i);
+                i++;
+            }
+        }
+        swap(nums, i, pivot);
+        return i;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
     
 }
