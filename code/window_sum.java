@@ -9,9 +9,26 @@ public class Solution {
 
         int len = nums.length;
         if (k >= len) {
-            
+            int[] ans = new int[1];
+            for (int i = 0; i < nums.length; i++) {
+                ans[0] += nums[i];
+            }
         }
 
+        int size = len - k + 1;
+        int[] ans = new int[size];
 
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+        ans[0] = sum;
+
+        for (int i = k; i < len; i++) {
+            sum = sum + nums[i] - nums[i - k - 1];
+            ans[i - k + 1] = sum;
+        }
+
+        return ans;
     }
 }
