@@ -11,7 +11,7 @@
 
 public class Solution {
     
-        private HashMap<Point, Point> father = new HashMap<>();
+        private HashMap<Integer, Integer> father = new HashMap<>();
     
         /*
          * @param n: An integer
@@ -27,8 +27,8 @@ public class Solution {
     
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
-                    Point temp = new Point(i, j);
-                    father.put(temp, temp);
+                    int id = getId(i, j, m);
+                    father.put(id, id);
                 }
             }
     
@@ -42,19 +42,21 @@ public class Solution {
                 int x = operators[i].x;
                 int y = operators[i].y;
                 if (grid[x][y] != 1) {
+                    int id = getId(x, y, m);
                     count++;
                     grid[x][y] = 1;
     
                     for (int j = 0; j < 4; j++) {
                         int newX = x + dx[j];
                         int newY = y + dy[j];
+                        
                     
                         if (newX >= 0 && newX < n && newY >= 0 && newY < m) {
                             if (grid[newX][newY] == 1) {
-                                Point newPoint = new Point(newX, newY);
-                                Point fatherCurr = compressedFind(operators[i]);
-                                Point fatherNew = compressedFind(newPoint);
-                                if (!fatherCurr.equals(fatherNew)) {
+                                int newId = getId(newX, newY, m);
+                                int fatherCurr = compressedFind(id);
+                                int fatherNew = compressedFind(newId);
+                                if (fatherCurr != fatherNew) {
                                     union(fatherCurr, fatherNew);
                                     count--;
                                 }
@@ -67,16 +69,16 @@ public class Solution {
             return ans;
         }
     
-        private Point compressedFind(Point p) {
+        private int compressedFind(int p) {
     
-            Point parent = father.get(p);
+            int parent = father.get(p);
             while (parent != father.get(parent)) {
                 parent = father.get(parent);
             }
     
-            Point curr = p;
+            int curr = p;
             while (curr != father.get(curr)) {
-                Point temp = father.get(curr);
+                int temp = father.get(curr);
                 father.put(curr, parent);
                 curr = temp;
             }
@@ -84,13 +86,16 @@ public class Solution {
             return parent;
         }
     
-        private void union(Point a, Point b) {
-            Point fatherA = compressedFind(a);
-            Point fatherB = compressedFind(b);
+        private void union(int a, int b) {
+            int fatherA = compressedFind(a);
+            int fatherB = compressedFind(b);
             if (fatherA != fatherB) {
                 father.put(fatherA, fatherB);
             }
         }
-    
+
+        private int getId(int x, int y, int m) {
+            return x*m + y;
+        }
     
     }
