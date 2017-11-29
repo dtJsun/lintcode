@@ -5,11 +5,17 @@ public class Solution {
      */
     public double sqrt(double x) {
         // write your code here
-
+        
         double start = 0;
         double end = x;
+        
+        if (x <= 1.0) {
+            end = 1.0;
+        }
 
-        while (end - start > 1e-8) {
+        
+
+        while (end - start >= 1e-12) {
             double mid = (start + end) / 2.0;
 
             if (mid * mid < x) {
@@ -23,8 +29,5 @@ public class Solution {
         return start;
 
     }
-
-
-
 
 }
