@@ -6,38 +6,36 @@ public class Solution {
      */
     public int search(int[] A, int target) {
         // write your code here
-        return helper(A, 0, A.length - 1, target);
-    }
 
-    private int helper(int[] A, int start, int end, int target) {
-        
-        if (start > end) return -1;
-
-        if (A[start] <= A[end]) {
-            return binarySearch(A, start, end, target);
-        } else {
-            int mid = (start + end) / 2;
-            int left = helper(A, start, mid, target);
-            int right = helper(A, mid + 1, end, target);
-            return left == -1 ? right : left;
+        if (A == null || A.length == 0) {
+            return -1;
         }
-    }
 
-    private int binarySearch(int[] A, int start, int end, int target) {
+        int start = 0;
+        int end = A.length - 1;
 
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
-            if (A[mid] == target) {
-                return mid;
-            } else if (A[mid] < target) {
-                start = mid;
-            } else {
-                end = mid;
+
+            if (A[start] < A[mid]) { // 说明前半部分是sored的
+                if (target >= A[start] && target <= A[mid]) { //如果target在sorted的部分里
+                    end = mid;
+                } else {
+                    start = mid;
+                }
+            } else { //说明后半部分是sorted的
+                if (target >= A[mid] && target <= A[end]) {
+                    start = mid;
+                } else {
+                    end = mid;
+                }
             }
         }
+        
         if (A[start] == target) return start;
         if (A[end] == target) return end;
-
         return -1;
+
+
     }
 }
