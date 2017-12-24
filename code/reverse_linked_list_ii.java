@@ -57,3 +57,10 @@ class Solution {
      
     }
 }
+
+/**
+ * 要点
+ * 新建dummy后，head需要指向dummy
+ * 记录truePrev和trueTail (trueTail可能没用，再想一想)
+ * 翻转过后，使用truePrev将各部分连起来
+ */
