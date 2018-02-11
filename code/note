@@ -1,0 +1,17 @@
+ArrayList linkedlist 比较
+ArrayList is implemented as a resizable array. As more elements are added to ArrayList, its size is increased dynamically. It's elements can be accessed directly by using the get and set methods, since ArrayList is essentially an array.
+
+LinkedList is implemented as a double linked list. Its performance on add and remove is better than Arraylist, but worse on get and set methods.
+
+For LinkedList
+get is O(n)
+add is O(1)
+remove is O(n)
+Iterator.remove is O(1)
+
+For ArrayList
+get is O(1)
+add is O(1) amortized, but O(n) worst-case since the array must be resized and copied
+remove is O(n)
+
+具体情况还需要查

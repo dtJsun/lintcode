@@ -54,6 +54,7 @@ public class Solution {
         return dummy.next;
     }
 
+    // fast = head.next 很重要，不然的话当输入只有两个节点的时候，会出错
     private ListNode findMid(ListNode head) {
 
         ListNode fast = head.next, slow = head;

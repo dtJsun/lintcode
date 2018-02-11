@@ -1,0 +1,24 @@
+class Solution {
+
+    void solution(String s) {
+        
+        if (s.length() < 3) {
+            System.out.print(s);
+        }
+
+        int[] flag = new int[2];
+        flag[0] = s.charAt(0);
+        flag[1] = s.charAt(1);
+        输出前两位；
+        for (int i = 2; i < s.length(); i++) {
+            if (flag都是1) {
+                输出当前位的flip（当前位是0就输出1，当前位是1就输出0）;
+                更新flag
+            } else {
+                输出当前位的原始值；
+                更新flag；
+            }
+        }
+    }
+
+}

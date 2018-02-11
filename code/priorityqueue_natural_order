@@ -1,0 +1,27 @@
+natural order: 
+
+public class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> que = new PriorityQueue();
+        
+        que.offer(1);
+        que.offer(2);
+        que.offer(3);
+        que.offer(4);
+        que.offer(5);
+        
+        while (!que.isEmpty()) {
+            System.out.println(que.poll());
+        }
+        
+    }
+}
+
+output:
+Finished in 94 ms
+1
+2
+3
+4
+5
+
