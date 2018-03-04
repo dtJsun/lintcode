@@ -21,7 +21,7 @@ private:
 
         if (pivot - start == k - 1) return nums[pivot];
         if (pivot - start > k - 1) return find(nums, start, pivot - 1, k);
-        return find(nums, pivot + 1, end, k - 1 - (pivot - start));
+        return find(nums, pivot + 1, end, k - (pivot - start + 1));
     }
 
     int partition(vector<int>& nums, int start, int end) {
