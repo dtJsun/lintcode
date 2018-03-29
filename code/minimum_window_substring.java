@@ -48,7 +48,7 @@ class Solution {
             
 
             if (dataSet.size() != dataMap.size()) {
-                return ans;
+                return ans; //此处必须return ans 想一想最后一遍循环
             }
 
             while (dataSet.size() == dataMap.size()) {

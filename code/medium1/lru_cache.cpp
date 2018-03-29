@@ -24,7 +24,7 @@ private:
 
     unordered_map<int, Node*> hash;
     Node* head;
-    Node* tail;
+    Node* tail; //tail是指向最后一个node的
     int capacity;
     int size;
 

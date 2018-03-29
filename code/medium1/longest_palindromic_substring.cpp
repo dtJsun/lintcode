@@ -43,6 +43,5 @@ class Solution {
 };
 /*
  * solution 1. find all substrings and get the longest palindrome => time limit exceeded
- * solution 2. gotta be an O(n) solution....but how???? manacher algorithm, but it looks too difficult
  * solution 3. choose the central position of the substring and look it up from both side, get the longest palindrome substring
- * /
+ */

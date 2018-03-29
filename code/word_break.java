@@ -13,7 +13,7 @@ public class Solution {
         mark[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             mark[i] = false;
-            for (int j = 1; j < maxLength && j <= i; j++) {
+            for (int j = 1; j < maxLength && j <= i; Œj++) {
                 if (!mark[i - j]) {
                     continue;
                 }
