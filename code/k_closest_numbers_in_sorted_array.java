@@ -5,6 +5,10 @@ public class Solution {
      * @param k: An integer
      * @return: an integer array
      */
+    
+     
+     // start 应该被叫做 smallerValue, end应该被叫做 greaterValue
+     // start 代表比target小的值， end 代表比target大的值
     public int[] kClosestNumbers(int[] A, int target, int k) {
         // write your code here
 
@@ -38,16 +42,15 @@ public class Solution {
         int start = 0, end = A.length - 1;
 
         while (start + 1 < end) {
-
             int mid = start + (end - start) / 2;
-
             if (A[mid] < target) {
                 start = mid;
-            } else if (A[mid] > end) {
+            } else if (A[mid] > target) {
                 end = mid;
             } else {
                 end = mid;
             }
+        }
 
             if (target <= A[start]) {
                 return start;
@@ -58,9 +61,6 @@ public class Solution {
             }
 
             return A.length; //只有target >= A[A.length - 1] 的时候才会出现这种情况
-
-        }
-
     }
 
 
