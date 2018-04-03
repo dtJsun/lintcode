@@ -15,3 +15,8 @@ add is O(1) amortized, but O(n) worst-case since the array must be resized and c
 remove is O(n)
 
 具体情况还需要查
+
+Quicksort worst case:
+1) Array is already sorted in same order.
+2) Array is already sorted in reverse order.
+3) All elements are same (special case of case 1 and 2)
